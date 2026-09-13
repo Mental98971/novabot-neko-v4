@@ -30,6 +30,10 @@ jobs:
           API_ID: ${{ secrets.API_ID }}
           API_HASH: ${{ secrets.API_HASH }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OWNER_ID: ${{ secrets.OWNER_ID }}
         run: |
           cd novabot
           echo "Checking if BOT_TOKEN is provided..."
@@ -37,5 +41,5 @@ jobs:
             echo "ERROR: BOT_TOKEN secret is missing or empty!"
             exit 1
           fi
-          echo "BOT_TOKEN is present. Starting bot..."
+          echo "Secrets loaded successfully. Starting bot..."
           PYTHONPATH=. timeout 20700 python -m bot
