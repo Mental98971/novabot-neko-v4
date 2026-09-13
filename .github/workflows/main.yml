@@ -1,0 +1,36 @@
+name: NovaBot Neko Runner
+
+on:
+  schedule:
+    - cron: '0 */5 * * *' # Automatically restarts every 5 hours (well within the 6-hour limit)
+  workflow_dispatch:      # Allows you to trigger the bot manually from GitHub
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          cd novabot
+          pip install --no-cache-dir -r requirements.txt
+
+      - name: Start Telegram Bot
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          API_ID: ${{ secrets.API_ID }}
+          API_HASH: ${{ secrets.API_HASH }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          cd novabot
+          # Runs the bot with a 5-hour and 45-minute timeout safeguard, then exits cleanly
+          timeout 20700 python -m bot || true
