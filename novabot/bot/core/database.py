@@ -8,7 +8,9 @@ external services. Set DATABASE_URL to a postgresql+asyncpg:// URL for
 production; connection-pool arguments are only applied for Postgres,
 since SQLite doesn't support them.
 """
+
 from __future__ import annotations
+
 
 from typing import AsyncGenerator
 
@@ -1362,7 +1364,6 @@ external services. Set DATABASE_URL to a postgresql+asyncpg:// URL for
 production; connection-pool arguments are only applied for Postgres,
 since SQLite doesn't support them.
 """
-from __future__ import annotations
 
 from typing import AsyncGenerator
 
