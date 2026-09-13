@@ -11,19 +11,6 @@ since SQLite doesn't support them.
 from __future__ import annotations
 
 from typing import AsyncGenerator
-"""
-SQLAlchemy 2.0 Async ORM — the single database backing every plugin:
-group management, moderation, AI memory, the personality layer, font
-preferences, and the live-music queue.
-
-Defaults to a local SQLite file (aiosqlite) so the bot runs with zero
-external services. Set DATABASE_URL to a postgresql+asyncpg:// URL for
-production; connection-pool arguments are only applied for Postgres,
-since SQLite doesn't support them.
-"""
-from __future__ import annotations
-
-from typing import AsyncGenerator
 
 from sqlalchemy import (
     BigInteger, Boolean, Column, DateTime, Float, ForeignKey, Index, Integer,
